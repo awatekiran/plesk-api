@@ -5,9 +5,7 @@ require './plesk_api_client'
 #host = ENV['REMOTE_HOST']
 #login = ENV['REMOTE_LOGIN']
 #password = ENV['REMOTE_PASSWORD']
-#host = ENV['172.16.142.83']
-#login = ENV['admin']
-#password = ENV['qwedsa@123']
+
 print "Enter host IP > "
 host = gets.chomp()
 
