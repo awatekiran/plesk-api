@@ -153,7 +153,10 @@ end
 def get_response()
 	puts "1. Check API
 	2. Check domain stat
-	3. Suspend the domain"
+	3. Suspend the domain
+	4. Unsuspend the domain
+	5. Backup domain name
+	6. Backup custmer"
 
 	print "Enter your choice > "
 	input = gets.chomp()
