@@ -93,7 +93,7 @@ end
 def unsuspend(domain)
 	print "Enter the domain to be activated > "
 	$domain = gets.chomp()
-	$request =<<eof
+	$request = <<eof
 	<packet version="1.6.5.0">
 		<site>
 			<set>
@@ -118,7 +118,7 @@ end
 def bak_domain(domain)
 	print "Enter the domain name which needs to be backed up > "
 	$domain = gets.chomp()
-	$request =<<eof
+	$request = <<eof
 	<packet version="1.6.5.0">
 		<backup-manager>
 			<backup-webspace>
@@ -134,6 +134,22 @@ eof
 	return $request
 end
 
+def bak_cust(customer)
+	print "Enter the customer name > "
+	cust = gets.chomp()
+	$request = <<eof
+	<packet version="1.6.5.0">
+		<backup-manager>
+			<customer-login>
+			#{cust}
+			</customer-login>
+			<local/>
+			<split-size>0</split-size>
+		</backup-manager>
+	</packet>
+eof
+	return $request
+end
 
 
 def get_response()
@@ -156,6 +172,12 @@ def get_response()
 	elsif c==4
 		unsuspend(domain)
 		puts $request
+	elsif c==5
+		bak_domain(domain)
+		puts $request
+	elsif c==6
+		bak_cust(customer)
+		puts $request		
 	else
         print "Wrong Choice !!"
 	end
