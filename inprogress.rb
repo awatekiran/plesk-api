@@ -90,6 +90,32 @@ eof
 	return $request
 end
 
+def unsuspend(domain)
+	print "Enter the domain to be activated > "
+	$domain = gets.chomp()
+	$request =<<eof
+	<packet version="1.6.5.0">
+		<site>
+			<set>
+				<filter>
+					<name>
+					#{$domain}
+					</name>
+				</filter>
+				<values>
+					<gen_setup>
+						<status>0</status>
+					</gen_setup>
+				</values>
+			</set>
+		</site>
+	</packet>
+eof
+	return $domain
+	return $request
+end
+
+
 def get_response()
 	puts "1. Check API
 	2. Check domain stat
@@ -107,6 +133,9 @@ def get_response()
 	elsif c==3
         suspend($domain)
         puts $request
+	elsif c==4
+		unsuspend(domain)
+		puts $request
 	else
         print "Wrong Choice !!"
 	end
