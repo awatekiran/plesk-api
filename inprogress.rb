@@ -171,10 +171,10 @@ def get_response()
         suspend($domain)
         puts $request
 	elsif c==4
-		unsuspend(domain)
+		unsuspend($domain)
 		puts $request
 	elsif c==5
-		bak_domain(domain)
+		bak_domain($domain)
 		puts $request
 	elsif c==6
 		bak_cust(customer)
