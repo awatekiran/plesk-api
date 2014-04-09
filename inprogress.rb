@@ -115,6 +115,23 @@ eof
 	return $request
 end
 
+def bak_domain(domain)
+	print "Enter the domain name which needs to be backed up > "
+	$domain = gets.chomp()
+	$request =<<eof
+	<packet version="1.6.5.0">
+		<backup-manager>
+			<backup-webspace>
+				<webspace-name>#{$domain}</webspace-name>
+				<local/>
+				<description>backup generate with script</description>
+			</backup-webspace>
+		</backup-manager>
+	</packet>
+eof
+	return $domain
+	return $request
+end
 
 def get_response()
 	puts "1. Check API
