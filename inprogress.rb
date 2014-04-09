@@ -63,7 +63,7 @@ eof
 	return $request
 end
 
-def suspend(domain)
+def sus_site(domain)
 	print "Enter domain to be suspended > "
 	$domain = gets.chomp()
 	$request = <<eof
@@ -88,7 +88,7 @@ eof
 	return $request
 end
 
-def unsuspend(domain)
+def unsus_site(domain)
 	print "Enter the domain to be activated > "
 	$domain = gets.chomp()
 	$request = <<eof
@@ -112,6 +112,27 @@ eof
 	return $domain
 	return $request
 end
+
+def sus_cust(customer)
+	print "Enter the customer name > "
+	cust = gets.chomp()
+	$request = <<eof
+	<packet version="1.6.5.0">
+		<customer>
+			<filter>
+				<login>#{cust}</login>
+			</filter>
+			<values>
+				<gen_info>
+					<status>16</status>
+				</gen_info>
+			</values>
+		<customer>
+	</packet>
+eof
+	return $request
+end
+
 
 def bak_domain(domain)
 	print "Enter the domain name which needs to be backed up > "
@@ -155,8 +176,9 @@ def get_response()
 	2. Check domain stat
 	3. Suspend the domain
 	4. Unsuspend the domain
-	5. Backup domain name
-	6. Backup custmer"
+	5. Suspend customer
+	6. Backup domain name
+	7. Backup custmer"
 
 	print "Enter your choice > "
 	input = gets.chomp()
@@ -168,15 +190,18 @@ def get_response()
         stat($domain)
         print $request
 	elsif c==3
-        suspend($domain)
+        sus_site($domain)
         puts $request
 	elsif c==4
-		unsuspend($domain)
+		unsus_site($domain)
 		puts $request
 	elsif c==5
-		bak_domain($domain)
+		sus_cust(customer)
 		puts $request
 	elsif c==6
+		bak_domain($domain)
+		puts $request
+	elsif c==7
 		bak_cust(customer)
 		puts $request		
 	else
