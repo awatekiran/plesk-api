@@ -125,6 +125,7 @@ def bak_domain(domain)
 				<webspace-name>#{$domain}</webspace-name>
 				<local/>
 				<description>backup generate with script</description>
+				<split-size>0</split-size>
 			</backup-webspace>
 		</backup-manager>
 	</packet>
@@ -132,6 +133,8 @@ eof
 	return $domain
 	return $request
 end
+
+
 
 def get_response()
 	puts "1. Check API
