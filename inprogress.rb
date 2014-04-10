@@ -144,6 +144,7 @@ def bak_domain(domain)
 				<webspace-name>#{$domain}</webspace-name>
 				<local/>
 				<description>backup generate with script</description>
+				<only-hosting/>
 				<split-size>0</split-size>
 			</backup-webspace>
 		</backup-manager>
