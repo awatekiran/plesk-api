@@ -205,6 +205,17 @@ eof
 	return $request
 end
 
+def put_res()
+	response = $client.request($request)
+	puts response.body
+end
+
+def down_res()
+	output = File.open('filename.zip', 'w')
+	output.write(response.body)
+	output.close()
+end
+
 
 def get_response()
 	puts "1. Check API
@@ -223,36 +234,48 @@ def get_response()
 	if c==1
         api()
         print $request
+        put_res()
 	elsif c==2
         stat($domain)
         print $request
+        put_res()
 	elsif c==3
         sus_site($domain)
         puts $request
+        put_res()
 	elsif c==4
 		unsus_site($domain)
 		puts $request
+		put_res()
 	elsif c==5
 		sus_cust(customer)
 		puts $request
+		put_res()
 	elsif c==6
 		bak_list($domain)
 		puts $request
+		put_res()
 	elsif c==7
 		bak_domain($domain)
 		puts $request
+		put_res()
 	elsif c==8
 		down_bak($domain)
 		puts $request
+		down_res()
 	elsif c==9
 		bak_cust(customer)
-		puts $request		
+		puts $request
+		put_res()		
 	else
         print "Wrong Choice !!"
 	end
 
-	response = $client.request($request)
-	puts response.body
+	#response = $client.request($request)
+	#puts response.body
+	#output = File.open('filename.zip', 'w')
+	#output.write(response.body)
+	#output.close()
 end
 
 get_response()
