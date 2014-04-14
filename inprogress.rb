@@ -153,6 +153,21 @@ eof
 	return $request
 end
 
+def bak_list($domain)
+	print "Enter the domain name > "
+	$domain = gets.chomp()
+	$request = <<eof
+	<packet version="1.6.5.0">
+		<backup-manager>
+			<get-local-backup-list>
+				<webspace-name>#{$domain}</webspace-name>
+			</get-local-backup-list>
+		</backup-manager>
+	</packet>
+eof
+	return $domain
+	return $request
+
 def down_bak(domain)
 	print "Enter the domain name > "
 	$domain = gets.chomp()
@@ -196,9 +211,10 @@ def get_response()
 	3. Suspend the domain
 	4. Unsuspend the domain
 	5. Suspend customer
-	6. Backup domain name
-	7. Download backup file
-	8. Backup custmer"
+	6. List present backup
+	7. Backup domain name
+	8. Download backup file
+	9. Backup custmer"
 
 	print "Enter your choice > "
 	input = gets.chomp()
@@ -219,12 +235,15 @@ def get_response()
 		sus_cust(customer)
 		puts $request
 	elsif c==6
-		bak_domain($domain)
+		bak_list($domain)
 		puts $request
 	elsif c==7
-		down_bak($domain)
+		bak_domain($domain)
 		puts $request
 	elsif c==8
+		down_bak($domain)
+		puts $request
+	elsif c==9
 		bak_cust(customer)
 		puts $request		
 	else
