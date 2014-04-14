@@ -143,7 +143,7 @@ def bak_domain(domain)
 			<backup-webspace>
 				<webspace-name>#{$domain}</webspace-name>
 				<local/>
-				<description>backup generate with script</description>
+				<description>backup generated with script</description>
 				<split-size>0</split-size>
 			</backup-webspace>
 		</backup-manager>
@@ -156,12 +156,14 @@ end
 def down_bak(domain)
 	print "Enter the domain name > "
 	$domain = gets.chomp()
+	print "Enter filename > "
+	fname = gets.chomp()
 	$request = <<eof
 	<packet version="1.6.5.0">
 		<backup-manager>
 			<download-file>
 				<webspace-name>#{$domain}</webspace-name>
-				<filename></filename>
+				<filename>#{filename}</filename>
 			</download-file>
 		</backup-manager>
 	</packet>
