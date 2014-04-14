@@ -163,7 +163,7 @@ def down_bak(domain)
 		<backup-manager>
 			<download-file>
 				<webspace-name>#{$domain}</webspace-name>
-				<filename>#{filename}</filename>
+				<filename>#{fname}</filename>
 			</download-file>
 		</backup-manager>
 	</packet>
