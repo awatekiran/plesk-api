@@ -211,6 +211,7 @@ def put_res()
 end
 
 def down_res()
+	response = $client.request($request)
 	output = File.open('filename.zip', 'w')
 	output.write(response.body)
 	output.close()
