@@ -153,7 +153,7 @@ eof
 	return $request
 end
 
-def bak_list($domain)
+def bak_list(domain)
 	print "Enter the domain name > "
 	$domain = gets.chomp()
 	$request = <<eof
