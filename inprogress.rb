@@ -167,6 +167,7 @@ def bak_list($domain)
 eof
 	return $domain
 	return $request
+end
 
 def down_bak(domain)
 	print "Enter the domain name > "
