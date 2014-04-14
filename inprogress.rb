@@ -212,6 +212,7 @@ end
 
 def down_res()
 	response = $client.request($request)
+	`touch filename.zip`
 	output = File.open('filename.zip', 'w')
 	output.write(response.body)
 	output.close()
